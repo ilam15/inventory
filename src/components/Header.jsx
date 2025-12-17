@@ -43,7 +43,7 @@ const Header = () => {
                     />
                 </div>
                 <Link to='/' className="text-[28px] hover:scale-[1.1] transition duration-300 font-bold tracking-wide">
-                    KICK GAME
+                    NEW KICK GAME
                 </Link>
                 <div className="flex items-center gap-6 text-xl">
                     <Link to='/form'>
