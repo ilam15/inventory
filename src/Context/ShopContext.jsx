@@ -12,7 +12,7 @@ export const ShopProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const { data } = await axios.get("http://localhost:3000/products");
+      const { data } = await axios.get("https://inventory-backend-2cmd.onrender.com/products");
       setProducts(data);
     };
     fetchProducts();
@@ -20,7 +20,7 @@ export const ShopProvider = ({ children }) => {
 
   const loadCart = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3000/cart", {
+      const { data } = await axios.get("https://inventory-backend-2cmd.onrender.com/cart", {
         headers: {
           Authorization: sessionStorage.getItem("token"),
         },
@@ -49,7 +49,7 @@ export const ShopProvider = ({ children }) => {
       }
 
       await axios.post(
-        "http://localhost:3000/cart",
+        "https://inventory-backend-2cmd.onrender.com/cart",
         {
           productId: product._id,
           qty: 1,
@@ -73,7 +73,7 @@ export const ShopProvider = ({ children }) => {
     if (qty < 1) return;
 
     await axios.put(
-      "http://localhost:3000/cart",
+      "https://inventory-backend-2cmd.onrender.com/cart",
       { productId, qty },
       {
         headers: {
@@ -87,7 +87,7 @@ export const ShopProvider = ({ children }) => {
 
   const removeItem = async (productId) => {
     await axios.delete(
-      "http://localhost:3000/cart",
+      "https://inventory-backend-2cmd.onrender.com/cart",
       {
         data: { productId },
         headers: {

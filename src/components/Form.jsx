@@ -4,36 +4,36 @@ import shoeImg from "../assets/images/S70936-8.webp";
 import axios from "axios";
 
 const Form = () => {
-  const { Products, setProducts } = useShop(); 
+  const { Products, setProducts } = useShop();
 
   const title = useRef();
   const price = useRef();
   const sprice = useRef();
   const img = useRef();
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const p_id = Products.length + 1;
-  const data = {
-    p_id,
-    title: title.current.value,
-    price: price.current.value,
-    strikedPrice: sprice.current.value,
-    img: img.current.value,
+    const p_id = Products.length + 1;
+    const data = {
+      p_id,
+      title: title.current.value,
+      price: price.current.value,
+      strikedPrice: sprice.current.value,
+      img: img.current.value,
+    };
+
+    setProducts([...Products, data]);
+    resetForm();
+
+    try {
+      const response = await axios.post("https://inventory-backend-2cmd.onrender.com/products", data);
+      const result = await response.data;
+      console.log("Posted Successfully:", result);
+    } catch (error) {
+      console.error("POST Error:", error);
+    }
   };
-
-  setProducts([...Products, data]);
-  resetForm();
-
-  try {
-    const response = await axios.post("http://localhost:3000/products", data);
-    const result = await response.data;
-    console.log("Posted Successfully:", result);
-  } catch (error) {
-    console.error("POST Error:", error);
-  }
-};
 
 
   const resetForm = () => {

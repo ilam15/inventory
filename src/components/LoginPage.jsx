@@ -11,7 +11,7 @@ const LoginPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const { data } = await axios.post("http://localhost:3000/auth/login", {
+    const { data } = await axios.post("https://inventory-backend-2cmd.onrender.com/auth/login", {
       email: username.current.value,
       password: password.current.value,
     });

@@ -13,7 +13,7 @@ const MyOrders = () => {
   // Load orders (userId comes from JWT automatically)
   const loadOrders = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3000/order", {
+      const { data } = await axios.get("https://inventory-backend-2cmd.onrender.com/order", {
         headers: { Authorization: token }
       });
       setOrders(data);
@@ -42,7 +42,7 @@ const MyOrders = () => {
   const handleSave = async (orderId) => {
     try {
       await axios.put(
-        `http://localhost:3000/order/${orderId}`,
+        `https://inventory-backend-2cmd.onrender.com/order/${orderId}`,
         updatedFields[orderId],
         { headers: { Authorization: token } }
       );
@@ -62,7 +62,7 @@ const MyOrders = () => {
 
     try {
       await axios.delete(
-        `http://localhost:3000/order/${orderId}`,
+        `https://inventory-backend-2cmd.onrender.com/order/${orderId}`,
         { headers: { Authorization: token } }
       );
 
@@ -75,16 +75,16 @@ const MyOrders = () => {
   };
 
 
-function addDecimal(value) {
-  const s = value.toString();
-  return s.length > 2
-    ? s.slice(0, -2) + "." + s.slice(-2)
-    : "0." + s.padStart(2, "0");
-}
+  function addDecimal(value) {
+    const s = value.toString();
+    return s.length > 2
+      ? s.slice(0, -2) + "." + s.slice(-2)
+      : "0." + s.padStart(2, "0");
+  }
 
   //give me sum of all products cost in the cart
 
-  
+
 
   return (
     <div className="min-h-screen bg-[#f7f4ef]">

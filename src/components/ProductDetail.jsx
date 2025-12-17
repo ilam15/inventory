@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const ProductDetail = () => {
-    const { id } = useParams(); 
+    const { id } = useParams();
     const { addToCart } = useShop();
 
     const [product, setProduct] = useState(null);
@@ -13,8 +13,8 @@ const ProductDetail = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/products/${id}`);
-                setProduct(response.data); 
+                const response = await axios.get(`https://inventory-backend-2cmd.onrender.com/products/${id}`);
+                setProduct(response.data);
             } catch (err) {
                 console.error("Error fetching product:", err);
             }
@@ -83,7 +83,7 @@ const ProductDetail = () => {
                         <p className="text-sm font-semibold mb-3">Size</p>
 
                         <div className="grid grid-cols-6 gap-2">
-                            {["UK 4","UK 5","UK 6","UK 7","UK 8","UK 9","UK 10","UK 11"].map((size) => (
+                            {["UK 4", "UK 5", "UK 6", "UK 7", "UK 8", "UK 9", "UK 10", "UK 11"].map((size) => (
                                 <button
                                     key={size}
                                     className="border py-2 text-sm rounded-md hover:border-black transition"
